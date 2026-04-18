@@ -26,9 +26,7 @@ function ParticleCloud() {
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
-          array={points}
-          count={points.length / 3}
-          itemSize={3}
+          args={[points, 3]}
         />
       </bufferGeometry>
       <pointsMaterial color="#67f8b8" size={0.03} transparent opacity={0.65} />
