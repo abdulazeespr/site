@@ -25,8 +25,7 @@ export default function Home() {
         <ContactSection />
       </main>
       <footer className="relative z-10 mx-auto max-w-6xl px-4 pb-12 text-center text-sm text-[var(--color-text-muted)]">
-        © {new Date().getFullYear()} Azees Abdul · Built with Next.js, Three.js and
-        Framer Motion
+        © {new Date().getFullYear()} Abdul Azees P R
       </footer>
     </div>
   );

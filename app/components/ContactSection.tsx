@@ -105,10 +105,7 @@ export default function ContactSection() {
         </motion.form>
       </div>
 
-      <div className="mt-10 border-t border-[var(--color-border)] pt-6 text-center text-xs text-[var(--color-text-muted)] md:text-sm">
-        Built with <FiHeart className="mx-1 inline text-[var(--color-accent)]" />
-        using Next.js, Framer Motion and Three.js
-      </div>
+      
     </SectionWrapper>
   );
 }
