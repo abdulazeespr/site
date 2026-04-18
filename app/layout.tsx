@@ -9,17 +9,28 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Azees Abdul | Full Stack Developer",
+  title: "Azees Abdul | Software Developer Portfolio",
   description:
-    "Results-driven Full Stack Developer with hands-on experience designing and deploying scalable web and mobile applications. Proven expertise in MERN stack, API design, and CI/CD workflows.",
+    "Modern portfolio of Azees Abdul, software developer focused on scalable web apps, strong UX, and design-driven engineering.",
   keywords: [
+    "Software Developer",
     "Full Stack Developer",
-    "MERN Stack",
-    "React",
-    "Node.js",
-    "Next.js",
     "Portfolio",
+    "React",
+    "Next.js",
+    "Three.js",
+    "Framer Motion",
+    "Design Thinking",
   ],
+  openGraph: {
+    title: "Azees Abdul | Software Developer Portfolio",
+    description:
+      "Modern software developer portfolio with projects, experience, and contact details.",
+    url: "https://yourdomain.com",
+    siteName: "Azees Abdul Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -28,8 +39,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.variable} font-sans antialiased`}>
+    <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#030a07" />
+        <link rel="icon" href="/favicon.ico" />
+      </head>
+      <body
+        className={`${inter.variable} font-sans antialiased text-[var(--color-text-primary)]`}
+      >
         {children}
       </body>
     </html>

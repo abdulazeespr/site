@@ -2,99 +2,91 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import {
-  FiMonitor,
-  FiServer,
-  FiSettings,
-  FiSmartphone,
-} from "react-icons/fi";
+import { FiCode, FiDatabase, FiLayout, FiSettings } from "react-icons/fi";
 import SectionWrapper from "./SectionWrapper";
 
 const skillCategories = [
   {
     title: "Frontend",
-    icon: <FiMonitor />,
-    color: "var(--color-accent-cyan)",
-    skills: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "React",
-      "TypeScript",
-      "Redux",
-      "React Query",
-      "Tailwind",
-    ],
+    icon: <FiLayout />,
+    level: "Advanced",
+    coverage: "90%",
+    skills: ["React", "Next.js", "TypeScript", "Tailwind", "Redux"],
   },
   {
     title: "Backend",
-    icon: <FiServer />,
-    color: "var(--color-accent-purple)",
-    skills: ["Node.js", "Express.js", "MongoDB", "PostgreSQL", "Redis"],
+    icon: <FiDatabase />,
+    level: "Advanced",
+    coverage: "86%",
+    skills: ["Node.js", "Express", "PostgreSQL", "MongoDB", "Redis"],
   },
   {
-    title: "DevOps",
+    title: "Engineering",
+    icon: <FiCode />,
+    level: "Strong",
+    coverage: "82%",
+    skills: ["System Design", "API Design", "Testing", "Performance"],
+  },
+  {
+    title: "Dev Workflow",
     icon: <FiSettings />,
-    color: "var(--color-accent-pink)",
-    skills: ["CI/CD", "Docker", "Git"],
-  },
-  {
-    title: "Mobile",
-    icon: <FiSmartphone />,
-    color: "var(--color-accent-cyan)",
-    skills: ["React Native"],
+    level: "Strong",
+    coverage: "80%",
+    skills: ["Git", "Docker", "CI/CD", "Release Process"],
   },
 ];
 
 export default function SkillsSection() {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
     <SectionWrapper id="skills">
-      <h2 className="text-3xl md:text-4xl font-bold mb-12">
-        Tech <span className="gradient-text">Stack</span>
-      </h2>
+      <span className="section-kicker">Skills</span>
+      <h2 className="section-title">Tools and capabilities I use to ship quality software.</h2>
 
-      <div
-        ref={ref}
-        className="grid grid-cols-1 md:grid-cols-2 gap-6"
-      >
-        {skillCategories.map((cat, idx) => (
-          <motion.div
-            key={idx}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.5, delay: idx * 0.12 }}
-            className="glass rounded-2xl p-6"
+      <div ref={ref} className="grid gap-4 md:grid-cols-2">
+        {skillCategories.map((category, idx) => (
+          <motion.article
+            key={category.title}
+            initial={{ opacity: 0, y: 24 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.45, delay: idx * 0.08 }}
+            className="glass-panel p-5 md:p-6"
           >
-            <div
-              className="flex items-center gap-3 mb-5 text-lg font-semibold"
-              style={{ color: cat.color }}
-            >
-              {cat.icon}
-              {cat.title}
+            <div className="mb-4 flex items-start justify-between gap-3">
+              <div>
+                <p className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-accent)]">
+                  {category.icon}
+                  {category.title}
+                </p>
+                <p className="mt-1 text-xs text-[var(--color-text-muted)]">
+                  {category.level}
+                </p>
+              </div>
+              <span className="text-xs text-[var(--color-text-secondary)]">
+                {category.coverage}
+              </span>
             </div>
 
-            <div className="flex flex-wrap gap-2">
-              {cat.skills.map((skill, i) => (
-                <motion.span
+            <div className="h-1.5 w-full overflow-hidden rounded-full bg-[rgba(77,120,97,0.28)]">
+              <div
+                className="h-full rounded-full bg-[var(--color-accent)]"
+                style={{ width: category.coverage }}
+              />
+            </div>
+
+            <div className="mt-4 flex flex-wrap gap-2">
+              {category.skills.map((skill) => (
+                <span
                   key={skill}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.3, delay: 0.3 + i * 0.05 }}
-                  className="px-4 py-2 text-sm rounded-full font-medium"
-                  style={{
-                    backgroundColor: `color-mix(in srgb, ${cat.color} 12%, transparent)`,
-                    color: cat.color,
-                    border: `1px solid color-mix(in srgb, ${cat.color} 25%, transparent)`,
-                  }}
+                  className="rounded-full border border-[var(--color-border)] px-2.5 py-1 text-xs text-[var(--color-text-secondary)]"
                 >
                   {skill}
-                </motion.span>
+                </span>
               ))}
             </div>
-          </motion.div>
+          </motion.article>
         ))}
       </div>
     </SectionWrapper>

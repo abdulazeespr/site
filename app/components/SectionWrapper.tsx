@@ -16,7 +16,7 @@ export default function SectionWrapper({
   className = "",
   delay = 0,
 }: SectionWrapperProps) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
@@ -24,9 +24,9 @@ export default function SectionWrapper({
       id={id}
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay, ease: "easeOut" }}
-      className={`section-padding max-w-6xl mx-auto ${className}`}
+      className={`section-shell section-padding mx-auto w-full max-w-6xl ${className}`}
     >
       {children}
     </motion.section>

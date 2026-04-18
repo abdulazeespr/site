@@ -11,66 +11,61 @@ const experience = [
     role: "Software Developer",
     period: "March 2025 - Present",
     highlights: [
-      "Led full lifecycle of an LMS platform with user analytics",
-      "Reduced server load via Redis caching and MongoDB optimization",
-      "Designed secure REST APIs for course management",
+      "Led full lifecycle delivery of an LMS platform with learner analytics.",
+      "Reduced server load using Redis caching and query-level optimizations.",
+      "Designed secure REST APIs for course management and user workflows.",
     ],
   },
 ];
 
 export default function ExperienceSection() {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
     <SectionWrapper id="experience">
-      <h2 className="text-3xl md:text-4xl font-bold mb-12">
-        Work <span className="gradient-text">Experience</span>
-      </h2>
+      <span className="section-kicker">Experience</span>
+      <h2 className="section-title">Professional impact through focused execution.</h2>
 
-      <div ref={ref} className="relative">
-        {/* Timeline line */}
-        <div className="absolute left-6 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--color-accent-cyan)] to-[var(--color-accent-purple)] opacity-30" />
-
+      <div ref={ref} className="relative space-y-5">
         {experience.map((job, idx) => (
-          <motion.div
-            key={idx}
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: idx * 0.15 }}
-            className="relative pl-16 md:pl-20 mb-10"
+          <motion.article
+            key={job.company}
+            initial={{ opacity: 0, y: 26 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.55, delay: idx * 0.12 }}
+            className="glass-panel relative p-6 md:p-7"
           >
-            {/* Timeline dot */}
-            <div className="absolute left-4 md:left-6 top-2 w-4 h-4 rounded-full bg-gradient-to-br from-[var(--color-accent-cyan)] to-[var(--color-accent-purple)] ring-4 ring-[var(--color-dark-900)]" />
-
-            <div className="glass rounded-2xl p-6 md:p-8 glow-purple">
-              <div className="flex flex-wrap items-center gap-3 mb-2">
-                <FiBriefcase className="text-[var(--color-accent-cyan)]" />
-                <h3 className="text-xl font-semibold">{job.role}</h3>
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+              <div className="inline-flex items-center gap-2">
+                <span className="rounded-lg border border-[var(--color-border)] bg-[rgba(17,45,33,0.6)] p-2 text-[var(--color-accent)]">
+                  <FiBriefcase />
+                </span>
+                <h3 className="text-lg font-semibold text-[var(--color-text-primary)] md:text-xl">
+                  {job.role}
+                </h3>
               </div>
-              <p className="text-[var(--color-accent-purple)] font-medium text-sm mb-1">
-                {job.company}
-              </p>
-              <p className="text-[var(--color-text-muted)] text-sm mb-5">
+              <span className="rounded-full border border-[var(--color-border)] px-3 py-1 text-xs text-[var(--color-text-secondary)]">
                 {job.period}
-              </p>
-
-              <ul className="space-y-3">
-                {job.highlights.map((h, i) => (
-                  <motion.li
-                    key={i}
-                    initial={{ opacity: 0, x: -15 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
-                    className="flex gap-3 text-[var(--color-text-secondary)] text-sm"
-                  >
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--color-accent-cyan)] shrink-0" />
-                    {h}
-                  </motion.li>
-                ))}
-              </ul>
+              </span>
             </div>
-          </motion.div>
+
+            <p className="mb-4 text-sm font-medium text-[var(--color-accent)] md:text-base">
+              {job.company}
+            </p>
+
+            <ul className="space-y-2.5">
+              {job.highlights.map((highlight) => (
+                <li
+                  key={highlight}
+                  className="flex gap-3 text-sm leading-relaxed text-[var(--color-text-secondary)]"
+                >
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-accent)]" />
+                  {highlight}
+                </li>
+              ))}
+            </ul>
+          </motion.article>
         ))}
       </div>
     </SectionWrapper>

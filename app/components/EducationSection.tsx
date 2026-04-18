@@ -6,23 +6,22 @@ import SectionWrapper from "./SectionWrapper";
 export default function EducationSection() {
   return (
     <SectionWrapper id="education">
-      <h2 className="text-3xl md:text-4xl font-bold mb-12">
-        <span className="gradient-text">Education</span>
-      </h2>
+      <span className="section-kicker">Education</span>
+      <h2 className="section-title">Academic foundation in computer science.</h2>
 
-      <div className="glass rounded-2xl p-8 md:p-10 glow-purple max-w-2xl">
+      <div className="glass-panel max-w-3xl p-6 md:p-7">
         <div className="flex items-start gap-4">
-          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--color-accent-purple)] to-[var(--color-accent-pink)] flex items-center justify-center text-white text-xl shrink-0">
+          <div className="rounded-xl border border-[var(--color-border)] bg-[rgba(17,45,33,0.7)] p-3 text-lg text-[var(--color-accent)]">
             <FiAward />
           </div>
           <div>
-            <h3 className="text-xl font-semibold mb-1">
+            <h3 className="text-lg font-semibold text-[var(--color-text-primary)] md:text-xl">
               Bachelor&apos;s Degree in Computer Science
             </h3>
-            <p className="text-[var(--color-accent-purple)] font-medium text-sm mb-1">
+            <p className="mt-1 text-sm text-[var(--color-accent)]">
               University of Calicut, Kerala
             </p>
-            <p className="text-[var(--color-text-muted)] text-sm">
+            <p className="mt-2 text-sm text-[var(--color-text-secondary)]">
               Graduated 2024
             </p>
           </div>
