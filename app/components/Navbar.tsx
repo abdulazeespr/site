@@ -30,7 +30,7 @@ export default function Navbar() {
             className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-text-primary)] md:text-base"
           >
             <FiCode className="text-[var(--color-accent)]" />
-            <span className="gradient-text">dev.profile</span>
+            <span className="gradient-text">dev.life</span>
           </a>
 
           <div className="hidden items-center gap-7 md:flex">

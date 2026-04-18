@@ -51,7 +51,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <span className="section-kicker">Software Developer Portfolio</span>
+          <span className="section-kicker">Software Developer </span>
           <h1 className="section-title text-4xl font-semibold md:text-6xl">
             Building products where
             <span className="gradient-text"> code and design thinking</span> work
